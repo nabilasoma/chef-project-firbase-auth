@@ -1,47 +1,77 @@
 import React from 'react';
 import { Card, ListGroup } from 'react-bootstrap';
-import {  Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import './Detail.css'
 
 const Details = () => {
 
-    const {id} = useParams();
+    const [buttonDisabled, setButtonDisabled] = useState(false);
+
+    const { id } = useParams();
     console.log(id);
 
     const detailData = useLoaderData();
     console.log(detailData);
 
-  
+    const handleClick = () => {
+        setButtonDisabled(true);
+        toast.success('Button clicked!');
+      };
+
+
 
     return (
         <div>
-            <h3><Link to='/'>Home</Link>this is chef details{id} </h3>
-           <div className='container'>
-           {
-                detailData? (
-                    <Card>
-                    <Card.Img variant="top" style={{height: 'auto'}} src={detailData.picture} />
-                    <Card.Body>
-                      <Card.Title>{detailData.name}</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                      </Card.Text>
-                    </Card.Body>
-                    <ListGroup className="list-group-flush">
-                      <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                      <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                      <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                    </ListGroup>
-                    <Card.Body>
-                      <Card.Link href="#">Card Link</Card.Link>
-                      <Card.Link href="#">Another Link</Card.Link>
-                    </Card.Body>
-                  </Card>
-                )
-                :
-                <p>Loading</p>
-            }
-           </div>
+            <div className='container row'>
+                {
+                    detailData ? (
+                        <Card>
+                            <Card.Img variant="top" className='images' src={detailData.picture} />
+                            <Card.Body>
+                                <Card.Title className='text-danger'><b>Name: </b>{detailData.name}</Card.Title>
+                                <Card.Text className='text-danger'>
+                                    <b>Bio:</b> {detailData.bio}
+                                </Card.Text>
+                                <Card.Body>
+                                <button onClick={handleClick} disabled={buttonDisabled}>Click me</button>
+                            </Card.Body>
+                            </Card.Body>
+                            <ListGroup className="list-group-flush">
+                                <ListGroup.Item className='text-danger'>
+                                    <b>Recipe: </b> <ul>
+                                        {detailData.foodName.map(food => (
+                                            <li key={food}>{food}</li>
+                                        ))}
+                                    </ul>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='text-danger'>
+                                    <b>Ingredients: </b> <ul>
+                                        {detailData.ingredients.map(ingredient => (
+                                            <li key={ingredient}>{ingredient}</li>
+                                        ))}
+                                    </ul>
+                                </ListGroup.Item>
+                                <ListGroup.Item className='text-danger'>
+                                    <b>Cooking Method:</b> {detailData.method}
+                                </ListGroup.Item>
+                                <ListGroup.Item  className='text-danger'>
+                                    <b>Years of Experience:</b> {detailData.yearsOfExp}
+                                </ListGroup.Item>
+                                <ListGroup.Item className='text-danger'>
+                                   <b>Likes: </b> {detailData.likes}
+                                </ListGroup.Item>
+                            </ListGroup>
+                            
+                        </Card>
+                    )
+                        :
+                        <p>Loading</p>
+                }
+            </div>
 
         </div>
     );
