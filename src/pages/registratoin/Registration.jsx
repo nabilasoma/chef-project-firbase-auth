@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../auth/AuthProvider';
 
 const Registration = () => {
+    const [error, setError] = useState('');
+    const {createUser} = useContext(AuthContext);
+
+    const handleRegistration = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+
+        console.log(name, email, password, photo);
+
+       
+
+        createUser(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser)
+        })
+        .catch(error => {
+            console.log(error)
+            setError('Password should be at least 6 character')
+            
+        })
+
+        if(password < 6 ){
+            setError('Password should at least 6 character');
+        }
+        
+        
+    }
+
     return (
        <div>
          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -29,7 +64,7 @@ const Registration = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-         <Form className='w-50 mx-auto'>
+         <Form onSubmit={handleRegistration} className='w-50 mx-auto'>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" name="name" placeholder="Enter email" required/>
@@ -54,10 +89,14 @@ const Registration = () => {
                 Register
             </Button>
             <br />
+            <Form.Text className="tex-danger">
+                
+            </Form.Text>
             <Form.Text className="text-muted">
                 Already have a account? Please <Link to='/login'>Login</Link>
             </Form.Text>
         </Form>
+        <p className='text-danger text-center'>{error}</p>
        </div>
     );
 };

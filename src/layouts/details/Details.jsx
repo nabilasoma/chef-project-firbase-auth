@@ -1,10 +1,9 @@
 import React from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Button, Card, ListGroup } from 'react-bootstrap';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import './Detail.css'
 
 const Details = () => {
@@ -19,14 +18,15 @@ const Details = () => {
 
     const handleClick = () => {
         setButtonDisabled(true);
-        toast.success('Button clicked!');
+        toast('Chicken Samba!');
+       
       };
 
 
 
     return (
         <div>
-            <div className='container row'>
+            <div className='container w-50 mx-auto mt-4'>
                 {
                     detailData ? (
                         <Card>
@@ -36,9 +36,6 @@ const Details = () => {
                                 <Card.Text className='text-danger'>
                                     <b>Bio:</b> {detailData.bio}
                                 </Card.Text>
-                                <Card.Body>
-                                <button onClick={handleClick} disabled={buttonDisabled}>Click me</button>
-                            </Card.Body>
                             </Card.Body>
                             <ListGroup className="list-group-flush">
                                 <ListGroup.Item className='text-danger'>
@@ -64,6 +61,12 @@ const Details = () => {
                                 <ListGroup.Item className='text-danger'>
                                    <b>Likes: </b> {detailData.likes}
                                 </ListGroup.Item>
+                                <Card.Body>
+                                <Button  onClick={handleClick} disabled={buttonDisabled} variant="primary">Favorite</Button>
+                                <ToastContainer />
+                                <Link to='/'> <Button className='mt-2' variant="primary">Back to Home</Button></Link>
+                               
+                            </Card.Body>
                             </ListGroup>
                             
                         </Card>
