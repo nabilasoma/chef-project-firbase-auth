@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Registration from "../pages/registratoin/Registration";
 import Login from "../pages/login/Login";
 import Blog from "../pages/blog/Blog";
+import Details from "../layouts/details/Details";
+import InfoPage from "../pages/infoPage/InfoPage";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,16 @@ const router = createBrowserRouter([
         path: '/registration',
         element: <Registration></Registration>
     },
+    {
+        path: '/chefInfo',
+        element: <Details></Details>,
+        children: [
+            {
+                path: 'id',
+                element: <InfoPage></InfoPage>
+            }
+        ]
+    }
 ])
 
 export default router;
