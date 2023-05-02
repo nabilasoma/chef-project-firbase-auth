@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import ChefCard from '../chefCard/ChefCard';
 import './Home.css'
+import { useLoaderData, useParams } from 'react-router-dom';
+import ChefCard from '../chefCard/ChefCard';
 
 
 const Home = () => {
-    const [chefData, setChefData] = useState([]);
+    // const [chefData, setChefData] = useState([]);
+    const {id} = useParams();
+    console.log(id);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/allChef')
-            .then(res => res.json())
-            .then(data => setChefData(data.chefs))
-            .catch(error => console.log(error))
-    }, [])
+    const loadChef = useLoaderData();
+    console.log(loadChef);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/allChef')
+    //         .then(res => res.json())
+    //         .then(data => setChefData(data.chefs))
+    //         .catch(error => console.log(error))
+    // }, [])
 
 
-    console.log(chefData);
+    // console.log(chefData);
     return (
         <div className='container mt-4'>
-
+            
            <div className='cardShow'>
            {
-                chefData.map(singleChef => <ChefCard key={singleChef.id}
+                loadChef.map(singleChef => <ChefCard key={singleChef.id}
                     singleChef={singleChef}
 
                 ></ChefCard>)

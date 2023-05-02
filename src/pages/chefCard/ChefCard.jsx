@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import './ChefCard.css'
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({singleChef}) => {
-    const {name, bio, picture, numRecipes, yearsOfExp} = singleChef;
+    const {name, bio, picture, numRecipes, yearsOfExp, id} = singleChef;
     return (
         <div>
             <Card>
@@ -13,7 +14,7 @@ const ChefCard = ({singleChef}) => {
                     <Card.Text>
                         {bio}
                     </Card.Text>
-                    <Button variant="primary">View Recipes</Button>
+                    <Link to={`/chefInfo/${id}`}><Button variant="primary">View Recipes</Button></Link>
                 </Card.Body>
             </Card>
         </div>

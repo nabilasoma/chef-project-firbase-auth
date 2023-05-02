@@ -17,6 +17,7 @@ const Header = () => {
                             <Link className='px-2 text-white text-decoration-none' to='/'>Home</Link>
                        
                             <Link className='px-2 text-white text-decoration-none' to='/blog'>Blog</Link>
+                            <Link className='px-2 text-white text-decoration-none' to='/category'>Category</Link>
                         
                             <Link className='px-2 text-white text-decoration-none' to='/registration'>Registration</Link>
                        
