@@ -1,11 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Button, Container, Form, Nav, Navbar } from 'react-bootstrap';
+import { Button, Card, Container, Form, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthProvider';
+import ActiveLink from '../../activelink/ActiveLink';
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip } from 'react-tooltip'
+
 
 const Registration = () => {
     const [error, setError] = useState('');
-    const {createUser} = useContext(AuthContext);
+    const {createUser, user} = useContext(AuthContext);
 
     const handleRegistration = event => {
         event.preventDefault();
@@ -38,33 +42,49 @@ const Registration = () => {
         
     }
 
+    const handleLogOut = () => {
+        
+    }
+
     return (
        <div>
          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="#home">
-                The Burning Kitchen
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mx-auto">
-                            <Link className='px-2 text-white text-decoration-none' to='/'>Home</Link>
-                       
-                            <Link className='px-2 text-white text-decoration-none' to='/blog'>Blog</Link>
-                        
-                            <Link className='px-2 text-white text-decoration-none' to='/registration'>Registration</Link>
-                       
-                    </Nav>
-                    <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-         <Form onSubmit={handleRegistration} className='w-50 mx-auto'>
+                <Container>
+                    <Navbar.Brand href="#home">
+                        The Burning Kitchen
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mx-auto">
+
+                            <ActiveLink className='px-2 text-white text-decoration-none' to='/'>Home</ActiveLink>
+
+                            <ActiveLink className='px-2 text-white text-decoration-none' to='/blog'>Blog</ActiveLink>
+
+                        </Nav>
+                        <Nav>
+                            <Nav.Link href="#deets">
+                                {
+                                    user ? <Button onClick={handleLogOut} variant="info">Logout</Button> :
+                                        <Link to='/login'><Button variant="info">LogIn</Button></Link>
+                                }
+                            </Nav.Link>
+                            <Nav.Link eventKey={2} href="#memes">
+                                <a
+                                    data-tooltip-id="my-tooltip"
+                                    data-tooltip-content="Nabila!"
+                                    data-tooltip-place="top"
+                                >
+                                    Hello World
+                                </a>
+                                <Tooltip id="my-tooltip" />
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        <Card className='w-50 mx-auto mt-4'>
+        <Form onSubmit={handleRegistration} className='w-50 mx-auto'>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" name="name" placeholder="Enter email" required/>
@@ -97,6 +117,7 @@ const Registration = () => {
             </Form.Text>
         </Form>
         <p className='text-danger text-center'>{error}</p>
+        </Card>
        </div>
     );
 };

@@ -29,12 +29,10 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
-                        
+
                             <ActiveLink className='px-2 text-white text-decoration-none' to='/'>Home</ActiveLink>
 
                             <ActiveLink className='px-2 text-white text-decoration-none' to='/blog'>Blog</ActiveLink>
-
-                            {/* <Link className='px-2 text-white text-decoration-none' to='/registration'>Registration</Link> */}
 
                         </Nav>
                         <Nav>
