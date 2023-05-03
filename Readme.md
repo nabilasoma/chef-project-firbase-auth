@@ -1,0 +1,5 @@
+- In this website I have added a header part.
+- There is banner part and show some cards of chefs.
+- I have added two meaningful part on the website.
+- I have added a footer part.
+- There is a view details part where I redirect to Chefs details information.
