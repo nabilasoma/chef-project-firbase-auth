@@ -7,6 +7,7 @@ import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ActiveLink from '../../activelink/ActiveLink';
 import './Header.css'
+import userp from '../../assets/user.jpg'
 
 
 const Header = () => {
@@ -21,7 +22,7 @@ const Header = () => {
 
 
     return (
-        <div>
+        <Container className='mt-2'>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">
@@ -39,26 +40,26 @@ const Header = () => {
                         <Nav>
                             <Nav.Link href="#deets">
                                 {
-                                    user ? <Button onClick={handleLogOut} variant="info">Logout</Button> :
+                                    user ? <>
+                                        <a
+                                            data-tooltip-id="my-tooltip"
+                                            data-tooltip-content={displayName}
+                                            data-tooltip-place="top"
+                                        >
+                                            <img className='img' src={userp} alt="" />
+                                        </a>
+                                        <Tooltip id="my-tooltip" />
+                                        <Button onClick={handleLogOut} variant="info">Logout</Button>
+                                    </> :
                                         <Link to='/login'><Button variant="info">LogIn</Button></Link>
                                 }
-                            </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                <a
-                                    data-tooltip-id="my-tooltip"
-                                    data-tooltip-content="Nabila!"
-                                    data-tooltip-place="top"
-                                >
-                                    Hello World
-                                </a>
-                                <Tooltip id="my-tooltip" />
                             </Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            
-        </div>
+
+        </Container>
     );
 };
 
