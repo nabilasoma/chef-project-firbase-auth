@@ -3,6 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import './ChefCard.css'
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazy-load';
+import About from '../../about/About';
 
 const ChefCard = ({ singleChef }) => {
     const { name, bio, picture, numRecipes, yearsOfExp, id } = singleChef;
@@ -17,9 +18,10 @@ const ChefCard = ({ singleChef }) => {
                     <Card.Text>
                         {bio}
                     </Card.Text>
-                    <Link to={`/chefInfo/${id}`}><Button variant="primary">View Recipes</Button></Link>
+                    <Link to={`/chefInfo/${id}`}><Button variant="secondary">View Recipes</Button></Link>
                 </Card.Body>
             </Card>
+            
         </div>
     );
 };

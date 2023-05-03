@@ -6,6 +6,7 @@ import { AuthContext } from '../../auth/AuthProvider';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
 import ActiveLink from '../../activelink/ActiveLink';
+import './Header.css'
 
 
 const Header = () => {
@@ -56,7 +57,7 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Banner></Banner>
+            
         </div>
     );
 };

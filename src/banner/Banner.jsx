@@ -16,19 +16,7 @@ const Banner = () => {
                 <h1>Welcome to my website</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac neque eget sapien feugiat facilisis.</p>
             </Col>
-            {/* <Col lg={6} className="banner-slider">
-                <Carousel>
-                    <Carousel.Item>
-                        <img className='h-50 w-50 mt-2' src={slide1} alt="First slide" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img className='h-50 w-50 mt-2' src={slide2} alt="Second slide" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img src="path/to/slide-3.jpg" alt="Third slide" />
-                    </Carousel.Item>
-                </Carousel>
-            </Col> */}
+          
         </Row>
     </Container>
        </div>
