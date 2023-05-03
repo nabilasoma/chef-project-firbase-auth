@@ -1,11 +1,20 @@
 import React, { useContext } from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Banner from '../../banner/Banner';
 import { AuthContext } from '../../auth/AuthProvider';
 
 const Header = () => {
-    const {displayName, signIn} = useContext(AuthContext);
+    const {displayName, user, logOut} = useContext(AuthContext);
+
+
+    const handleLogOut = () => {
+        logOut()
+        .then()
+        .catch(error => console.log(error));
+    }
+
+
     return (
        <div>
          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -25,7 +34,10 @@ const Header = () => {
                     </Nav>
                     <Nav>
                         <Nav.Link href="#deets">
-                            {displayName}
+                        {
+                            user?  <Button onClick={handleLogOut} variant="info">Logout</Button> :
+                            <Link to='/login'><Button variant="info">LogIn</Button></Link>
+                        }
                         </Nav.Link>
                         <Nav.Link eventKey={2} href="#memes">
                             Dank memes
