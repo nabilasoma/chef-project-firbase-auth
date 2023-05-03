@@ -5,7 +5,7 @@ const Recipe = () => {
     return (
 
         <Container className='mt-4'>
-            <h3 className='text-secondary text-center'>Our Favorite Chinese Recipes</h3>
+            <h3 className='text-secondary text-center mt-4'>Our Favorite Recipes</h3>
             <Row>
                 <Col md={4}>
                     <Card>
