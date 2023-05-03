@@ -2,13 +2,16 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import './ChefCard.css'
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
-const ChefCard = ({singleChef}) => {
-    const {name, bio, picture, numRecipes, yearsOfExp, id} = singleChef;
+const ChefCard = ({ singleChef }) => {
+    const { name, bio, picture, numRecipes, yearsOfExp, id } = singleChef;
     return (
         <div>
             <Card>
-                <Card.Img variant="top" className='images' src={picture} />
+                <LazyLoad>
+                    <Card.Img variant="top" className='images' src={picture} />
+                </LazyLoad>
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>
                     <Card.Text>
