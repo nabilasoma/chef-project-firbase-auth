@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import LazyLoad from 'react-lazy-load';
 
 const Recipe = () => {
     return (
@@ -9,7 +10,9 @@ const Recipe = () => {
             <Row>
                 <Col md={4}>
                     <Card>
+                        <LazyLoad>
                         <Card.Img style={{height: '250px'}} variant="top" src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+                        </LazyLoad>
                         <Card.Body>
                             <Card.Title>Kung Pao Chicken</Card.Title>
                             <Card.Text>
@@ -21,7 +24,9 @@ const Recipe = () => {
                 </Col>
                 <Col md={4}>
                     <Card>
+                        <LazyLoad>
                         <Card.Img style={{height: '250px'}} variant="top" src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" />
+                        </LazyLoad>
                         <Card.Body>
                             <Card.Title>Hot and Sour Soup</Card.Title>
                             <Card.Text>
@@ -33,7 +38,9 @@ const Recipe = () => {
                 </Col>
                 <Col md={4}>
                     <Card>
+                        <LazyLoad>
                         <Card.Img style={{height: '250px'}} variant="top" src="https://images.unsplash.com/photo-1485962398705-ef6a13c41e8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
+                        </LazyLoad>
                         <Card.Body>
                             <Card.Title>Dumplings</Card.Title>
                             <Card.Text>

@@ -21,21 +21,23 @@ const Home = () => {
        <div>
         <Banner></Banner>
          <Container className='mt-4'>
-            
+        
            <Row>
-            <Col lg={12} md={6} xs={12}>
-           
-          <div className='cardShow'>
+            <Col>
+            <Card className='cardShow'>
+          
           {
                  loadChef.map(singleChef => <ChefCard key={singleChef.id}
                      singleChef={singleChef}
  
                  ></ChefCard>)
              }
-          </div>
-            
-            </Col>
+             
+          </Card>
+          </Col>
            </Row>
+            
+           
             
          </Container>
          <About></About>

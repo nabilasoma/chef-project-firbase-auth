@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Container, Form, Nav, Navbar } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthProvider';
@@ -12,6 +12,7 @@ import { Tooltip } from 'react-tooltip'
 
 
 const Login = () => {
+    const [error, setError] = useState('')
 
     const {signIn, googleSign, gitHubSignIn} = useContext(AuthContext);
 
@@ -21,6 +22,8 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
+
+    
     const handleLogin = event => {
         event.preventDefault();
 
@@ -41,7 +44,21 @@ const Login = () => {
         .catch(error => {
             console.log(error)
         })
+
+        if(!email === 'email' && !password === 'password'){
+            setError('Email and password do not match')
+        }
+        else{
+            setError('')
+        }
+
+        
+     if(password < 6 ){
+        setError('Password should be at least 6 characters')
+    }
+
     };
+
 
     const handleGoogle = () => {
         googleSign()
@@ -83,15 +100,16 @@ const Login = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" name="password" placeholder="Password" required/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
             <Button variant="info" type="submit">
                 Login
             </Button>
             <br />
             <Form.Text className="text-success">
                 New To This Site? Please <Link to='/registration'>Register</Link>
+          </Form.Text>
+            <br />
+          <Form.Text className="text-danger">
+                {error}
           </Form.Text>
         </Form>
         <div className='text-center'>

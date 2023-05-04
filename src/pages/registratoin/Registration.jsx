@@ -5,6 +5,8 @@ import { AuthContext } from '../../auth/AuthProvider';
 import ActiveLink from '../../activelink/ActiveLink';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import Header from '../../shared/Header/Header';
+import { updateProfile } from 'firebase/auth';
 
 
 const Registration = () => {
@@ -27,7 +29,8 @@ const Registration = () => {
         createUser(email, password)
         .then(result => {
             const loggedUser = result.user;
-            console.log(loggedUser)
+            console.log(loggedUser);
+            updatePhoto(result.user, photo)
         })
         .catch(error => {
             console.log(error)
@@ -42,47 +45,23 @@ const Registration = () => {
         
     }
 
-    const handleLogOut = () => {
-        
+    const updatePhoto =(user, photoURL) => {
+        updateProfile(user, {
+            photoURL : photoURL
+        })
+        .then(result => {
+            console.log('photo url updated')
+        })
+        .catch(error => {
+            setError(error.message)
+        })
     }
+
+
 
     return (
        <div>
-         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="#home">
-                        The Burning Kitchen
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mx-auto">
-
-                            <ActiveLink className='px-2 text-white text-decoration-none' to='/'>Home</ActiveLink>
-
-                            <ActiveLink className='px-2 text-white text-decoration-none' to='/blog'>Blog</ActiveLink>
-
-                        </Nav>
-                        <Nav>
-                            <Nav.Link href="#deets">
-                                {
-                                    user ? <Button onClick={handleLogOut} variant="info">Logout</Button> :
-                                        <Link to='/login'><Button variant="info">LogIn</Button></Link>
-                                }
-                            </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                <a
-                                    data-tooltip-id="my-tooltip"
-                                    data-tooltip-content="Nabila!"
-                                    data-tooltip-place="top"
-                                >
-                                    Hello World
-                                </a>
-                                <Tooltip id="my-tooltip" />
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            <Header></Header>
         <Card className='w-50 mx-auto mt-4'>
         <Form onSubmit={handleRegistration} className='w-50 mx-auto'>
             <Form.Group className="mb-3" controlId="formBasicEmail">

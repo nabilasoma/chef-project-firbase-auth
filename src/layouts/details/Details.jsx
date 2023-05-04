@@ -64,7 +64,7 @@ const Details = () => {
                                 <Card.Body>
                                 <Button  onClick={handleClick} disabled={buttonDisabled} variant="primary">Favorite</Button>
                                 <ToastContainer />
-                                <Link to='/'> <Button className='mt-2' variant="primary">Back to Home</Button></Link>
+                                <Link to='/'> <Button className='mt-2' variant="primary">Home</Button></Link>
                                
                             </Card.Body>
                             </ListGroup>
