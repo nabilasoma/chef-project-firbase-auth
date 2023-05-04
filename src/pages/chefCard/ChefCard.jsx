@@ -3,7 +3,6 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import './ChefCard.css'
 import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazy-load';
-import About from '../../about/About';
 
 
 const ChefCard = ({ singleChef }) => {
@@ -13,6 +12,7 @@ const ChefCard = ({ singleChef }) => {
         
             <Col>
             <Card className="h-100">
+                
                 <LazyLoad>
                     <Card.Img variant="top" className='images' src={picture} />
                 </LazyLoad>

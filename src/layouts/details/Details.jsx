@@ -5,6 +5,9 @@ import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Detail.css'
+import LazyLoad from 'react-lazy-load';
+import Footer from '../../shared/footer/Footer';
+import Header from '../../shared/Header/Header';
 
 const Details = () => {
 
@@ -26,11 +29,14 @@ const Details = () => {
 
     return (
         <div>
-            <div className='container w-50 mx-auto mt-4'>
+            <Header></Header>
+            <div className='container w-75 mx-auto mt-4'>
                 {
                     detailData ? (
                         <Card>
+                            <LazyLoad>
                             <Card.Img variant="top" className='images' src={detailData.picture} />
+                            </LazyLoad>
                             <Card.Body>
                                 <Card.Title className='text-danger'><b>Name: </b>{detailData.name}</Card.Title>
                                 <Card.Text className='text-danger'>
@@ -64,8 +70,6 @@ const Details = () => {
                                 <Card.Body>
                                 <Button  onClick={handleClick} disabled={buttonDisabled} variant="primary">Favorite</Button>
                                 <ToastContainer />
-                                <Link to='/'> <Button className='mt-2' variant="primary">Home</Button></Link>
-                               
                             </Card.Body>
                             </ListGroup>
                             
@@ -75,6 +79,7 @@ const Details = () => {
                         <p>Loading</p>
                 }
             </div>
+            <Footer></Footer>
 
         </div>
     );

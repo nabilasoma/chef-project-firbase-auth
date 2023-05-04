@@ -21,6 +21,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Container className='mt-4'>
+      <h3 className='text-center text-danger mt-4'>Our Chefs</h3>
             <Row xs={1} md={2} lg={3} className="g-4">
               {
                 loadChef.map(singleChef => <ChefCard key={singleChef.id}

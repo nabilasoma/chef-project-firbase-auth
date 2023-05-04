@@ -1,10 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Button, Card, Container, Form, Nav, Navbar } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../auth/AuthProvider';
-import ActiveLink from '../../activelink/ActiveLink';
 import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
 import Header from '../../shared/Header/Header';
 import { updateProfile } from 'firebase/auth';
 
@@ -64,9 +62,9 @@ const Registration = () => {
             <Header></Header>
         <Card className='w-50 mx-auto mt-4'>
         <Form onSubmit={handleRegistration} className='w-50 mx-auto'>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
-                <Form.Control type="text" name="name" placeholder="Enter email" required/>
+                <Form.Control type="email" name="email" placeholder="Enter Name" required/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -81,9 +79,7 @@ const Registration = () => {
                 <Form.Label>Photo url</Form.Label>
                 <Form.Control type="text" name="photo" placeholder="Photo url" required/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
+        
             <Button variant="primary" type="submit">
                 Register
             </Button>
