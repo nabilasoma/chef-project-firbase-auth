@@ -9,41 +9,35 @@ import { Card, Col, Container, Row } from 'react-bootstrap';
 
 
 const Home = () => {
-   
-    const {id} = useParams();
-    console.log(id);
 
-    const loadChef = useLoaderData();
-    console.log(loadChef);
+  const { id } = useParams();
+  console.log(id);
 
-   
-    return (
-       <div>
-        <Banner></Banner>
-         <Container className='mt-4'>
-        
-           <Row>
-            <Col>
-            <Card className='cardShow'>
-          
-          {
-                 loadChef.map(singleChef => <ChefCard key={singleChef.id}
-                     singleChef={singleChef}
- 
-                 ></ChefCard>)
-             }
-             
-          </Card>
+  const loadChef = useLoaderData();
+  console.log("loadChef from home",loadChef);
+
+
+  return (
+    <div>
+      <Banner></Banner>
+      <Container className='mt-4'>
+        <Row>
+          <Col>
+            <div className='cardShow'>
+              {
+                loadChef.map(singleChef => <ChefCard key={singleChef.id}
+                  singleChef={singleChef}
+
+                ></ChefCard>)
+              }
+            </div>
           </Col>
-           </Row>
-            
-           
-            
-         </Container>
-         <About></About>
-         <Recipe></Recipe>
-       </div>
-    );
+        </Row>
+      </Container>
+      <About></About>
+      <Recipe></Recipe>
+    </div>
+  );
 };
 
 export default Home;

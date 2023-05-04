@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 import LazyLoad from 'react-lazy-load';
 import About from '../../about/About';
 
+
 const ChefCard = ({ singleChef }) => {
     const { name, bio, picture, numRecipes, yearsOfExp, id, foodName, likes } = singleChef;
+    console.log(singleChef)
     return (
         <Row>
-            <Col lg={12} md={6}>
+            <Col>
             <Card>
                 <LazyLoad>
                     <Card.Img variant="top" className='images' src={picture} />
@@ -26,9 +28,7 @@ const ChefCard = ({ singleChef }) => {
                     </Card.Text>
                     <Card.Text className='text-success'> 
                    <b> My Famous Recipes are: 
-                  <ul>
-                  {foodName.map(food => (<li key={food}>{food}</li>))}
-                  </ul>
+                   <p>{yearsOfExp}</p> 
                    </b>   
                     </Card.Text>
                    </div>
