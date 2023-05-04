@@ -10,9 +10,9 @@ const ChefCard = ({ singleChef }) => {
     const { name, bio, picture, numRecipes, yearsOfExp, id, foodName, likes } = singleChef;
     console.log(singleChef)
     return (
-        <Row>
+        
             <Col>
-            <Card>
+            <Card className="h-100">
                 <LazyLoad>
                     <Card.Img variant="top" className='images' src={picture} />
                 </LazyLoad>
@@ -28,7 +28,7 @@ const ChefCard = ({ singleChef }) => {
                     </Card.Text>
                     <Card.Text className='text-success'> 
                    <b> My Famous Recipes are: 
-                   <p>{yearsOfExp}</p> 
+                    {numRecipes}
                    </b>   
                     </Card.Text>
                    </div>
@@ -40,7 +40,6 @@ const ChefCard = ({ singleChef }) => {
             </Card>
             </Col>
             
-        </Row>
     );
 };
 

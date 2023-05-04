@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Home.css'
 import { useLoaderData, useParams } from 'react-router-dom';
 import ChefCard from '../chefCard/ChefCard';
 import Banner from '../../banner/Banner';
 import About from '../../about/About';
 import Recipe from '../../recipe/Recipe';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 
 const Home = () => {
@@ -21,18 +21,14 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Container className='mt-4'>
-        <Row>
-          <Col>
-            <div className='cardShow'>
+            <Row xs={1} md={2} lg={3} className="g-4">
               {
                 loadChef.map(singleChef => <ChefCard key={singleChef.id}
                   singleChef={singleChef}
 
                 ></ChefCard>)
               }
-            </div>
-          </Col>
-        </Row>
+              </Row>
       </Container>
       <About></About>
       <Recipe></Recipe>
