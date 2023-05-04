@@ -26,7 +26,6 @@ const Details = () => {
       };
 
 
-
     return (
         <div>
             <Header></Header>

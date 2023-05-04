@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import banner from '../assets/banner.jpg'
 import banner2 from '../assets/banner3.jpg'
 import LazyLoad from 'react-lazy-load';
 
@@ -10,10 +9,8 @@ const Banner = () => {
     return (
         
       <Container>
-       
          <div style={{backgroundImage: `url(${banner2})`, height: '300px', backgroundRepeat: 'no-repeat',
        backgroundSize: 'cover'}}>
-        
          <Container fluid className="banner">
         <Row>
             <Col lg={6} className="banner-text text-white w-50">
